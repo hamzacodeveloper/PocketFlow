@@ -57,6 +57,7 @@
   "amountRequired": "Amount must be greater than zero",
   "categoryRequired": "Category is required for expenses",
   "dateInvalid": "Date must be YYYY-MM-DD",
+  "fileSaved": "File saved to your chosen folder successfully.",
   "invalidFile": "Invalid file",
   "fileTooLarge": "File is too large (max 5 MB)",
   "tooManyRows": "Too many rows (max 20,000)",

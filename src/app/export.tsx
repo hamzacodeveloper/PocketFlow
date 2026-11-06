@@ -48,8 +48,13 @@ export default function ExportScreen() {
       } else {
         await exportMonthExcel(monthKey);
       }
+      Alert.alert(t('download'), t('fileSaved'));
     } catch (e: unknown) {
-      Alert.alert(t('invalidFile'), String(e));
+      const msg = String(e);
+      // Don't show an error if the user simply cancelled the folder picker
+      if (!msg.includes('cancelled') && !msg.includes('canceled') && !msg.includes('denied')) {
+        Alert.alert(t('invalidFile'), msg);
+      }
     } finally {
       setLoading(false);
     }
@@ -121,7 +126,7 @@ export default function ExportScreen() {
       )}
 
       <Button
-        label={`${t('share')} / ${t('download')}`}
+        label={t('download')}
         icon="share-outline"
         onPress={handleExport}
         loading={loading}

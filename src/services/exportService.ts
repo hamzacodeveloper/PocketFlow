@@ -1,6 +1,7 @@
 import * as FileSystem from 'expo-file-system/legacy';
 import * as Print from 'expo-print';
 import * as Sharing from 'expo-sharing';
+import { Platform } from 'react-native';
 import { utils, write } from 'xlsx';
 
 import { setSetting } from '@/db/repositories/settings';
@@ -9,6 +10,36 @@ import i18n from '@/i18n';
 import { getMonthRange } from '@/utils/dates';
 
 const cacheDir = FileSystem.cacheDirectory ?? '';
+
+// ─── Save to device ──────────────────────────────────────────────────────────
+// Android: uses StorageAccessFramework so the user picks a folder (e.g.
+//          Downloads) and the file is written there directly.
+// iOS:     opens the native share sheet so the user can save to Files / AirDrop.
+async function saveToDevice(cachedPath: string, filename: string, mimeType: string): Promise<void> {
+  if (Platform.OS === 'android') {
+    const { StorageAccessFramework } = FileSystem;
+    const result = await StorageAccessFramework.requestDirectoryPermissionsAsync();
+    if (!result.granted) {
+      throw new Error('Storage permission denied. Please grant folder access and try again.');
+    }
+    const base64 = await FileSystem.readAsStringAsync(cachedPath, {
+      encoding: FileSystem.EncodingType.Base64,
+    });
+    const destUri = await StorageAccessFramework.createFileAsync(result.directoryUri, filename, mimeType);
+    await FileSystem.writeAsStringAsync(destUri, base64, {
+      encoding: FileSystem.EncodingType.Base64,
+    });
+  } else {
+    // iOS — share sheet lets the user save to Files, AirDrop, etc.
+    if (await Sharing.isAvailableAsync()) {
+      const uti =
+        mimeType === 'application/pdf'
+          ? 'com.adobe.pdf'
+          : 'org.openxmlformats.spreadsheetml.sheet';
+      await Sharing.shareAsync(cachedPath, { mimeType, UTI: uti, dialogTitle: filename });
+    }
+  }
+}
 
 // Formula-injection protection: prefix dangerous chars with apostrophe
 function safe(val: string | null | undefined): string {
@@ -116,19 +147,10 @@ export async function exportMonthPdf(monthKey: string): Promise<void> {
       encoding: FileSystem.EncodingType.Base64,
     });
   } else {
-    await FileSystem.copyAsync({
-      from: uri,
-      to: destination,
-    });
+    await FileSystem.copyAsync({ from: uri, to: destination });
   }
 
-  if (await Sharing.isAvailableAsync()) {
-    await Sharing.shareAsync(destination, {
-      mimeType: 'application/pdf',
-      UTI: 'com.adobe.pdf',
-      dialogTitle: filename,
-    });
-  }
+  await saveToDevice(destination, filename, 'application/pdf');
 }
 
 // ─── Excel ──────────────────────────────────────────────────────────────────
@@ -173,10 +195,7 @@ async function saveAndShare(wb: ReturnType<typeof utils.book_new>, filename: str
   const base64 = write(wb, { type: 'base64', bookType: 'xlsx' });
   const path = `${cacheDir}${filename}`;
   await FileSystem.writeAsStringAsync(path, base64, { encoding: FileSystem.EncodingType.Base64 });
-  await Sharing.shareAsync(path, {
-    mimeType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-    UTI: 'org.openxmlformats.spreadsheetml.sheet',
-  });
+  await saveToDevice(path, filename, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 }
 
 export async function exportMonthExcel(monthKey: string): Promise<void> {
