@@ -107,16 +107,28 @@ function buildPdfHtml(monthKey: string): string {
 
 export async function exportMonthPdf(monthKey: string): Promise<void> {
   const html = buildPdfHtml(monthKey);
-  // `printToFileAsync` already writes the PDF into the app's cache directory and
-  // returns a `file://` URI that expo-sharing can share directly (this is the
-  // documented flow). Relocating it with `FileSystem.moveAsync` is unnecessary
-  // and rejects on Android, so the printed URI is shared as-is.
-  const { uri } = await Print.printToFileAsync({ html });
-  await Sharing.shareAsync(uri, {
-    mimeType: 'application/pdf',
-    UTI: 'com.adobe.pdf',
-    dialogTitle: `PocketFlow_${monthKey}.pdf`,
-  });
+  const { uri, base64 } = await Print.printToFileAsync({ html, base64: true });
+  const filename = `PocketFlow_${monthKey}.pdf`;
+  const destination = `${cacheDir}${filename}`;
+
+  if (base64) {
+    await FileSystem.writeAsStringAsync(destination, base64, {
+      encoding: FileSystem.EncodingType.Base64,
+    });
+  } else {
+    await FileSystem.copyAsync({
+      from: uri,
+      to: destination,
+    });
+  }
+
+  if (await Sharing.isAvailableAsync()) {
+    await Sharing.shareAsync(destination, {
+      mimeType: 'application/pdf',
+      UTI: 'com.adobe.pdf',
+      dialogTitle: filename,
+    });
+  }
 }
 
 // ─── Excel ──────────────────────────────────────────────────────────────────
