@@ -1,0 +1,180 @@
+{
+  "apiRoutes": [],
+  "htmlRoutes": [
+    {
+      "file": "./(tabs)/index.tsx",
+      "page": "/(tabs)/index",
+      "namedRegex": "^(?:/\\(tabs\\))?(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-0d1eaa4408084faa575a259e18f5035c.js",
+          "/_expo/static/js/web/_layout-6b83f2b00cfac3ca729b6c58e36c09be.js",
+          "/_expo/static/js/web/index-336f8bfd2bcfbc94c2f24182c32a2887.js"
+        ]
+      }
+    },
+    {
+      "file": "./(tabs)/add.tsx",
+      "page": "/(tabs)/add",
+      "namedRegex": "^(?:/\\(tabs\\))?/add(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-0d1eaa4408084faa575a259e18f5035c.js",
+          "/_expo/static/js/web/_layout-6b83f2b00cfac3ca729b6c58e36c09be.js",
+          "/_expo/static/js/web/add-551d32723eb5820f41fd677c7df5f2c1.js"
+        ]
+      }
+    },
+    {
+      "file": "./(tabs)/home.tsx",
+      "page": "/(tabs)/home",
+      "namedRegex": "^(?:/\\(tabs\\))?/home(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-0d1eaa4408084faa575a259e18f5035c.js",
+          "/_expo/static/js/web/_layout-6b83f2b00cfac3ca729b6c58e36c09be.js",
+          "/_expo/static/js/web/home-da43b9e13e49bd18daae1339f99a8a9e.js"
+        ]
+      }
+    },
+    {
+      "file": "./import.tsx",
+      "page": "/import",
+      "namedRegex": "^/import(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-0d1eaa4408084faa575a259e18f5035c.js",
+          "/_expo/static/js/web/import-5b3a286903436455a2507d30e2097c4a.js"
+        ]
+      }
+    },
+    {
+      "file": "./export.tsx",
+      "page": "/export",
+      "namedRegex": "^/export(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-0d1eaa4408084faa575a259e18f5035c.js",
+          "/_expo/static/js/web/export-e3929c3d5ad4f6d7d84b8dfbf1ad5aba.js"
+        ]
+      }
+    },
+    {
+      "file": "./(tabs)/reports.tsx",
+      "page": "/(tabs)/reports",
+      "namedRegex": "^(?:/\\(tabs\\))?/reports(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-0d1eaa4408084faa575a259e18f5035c.js",
+          "/_expo/static/js/web/_layout-6b83f2b00cfac3ca729b6c58e36c09be.js",
+          "/_expo/static/js/web/reports-041356894c04fdde707c4ec80e6df4ca.js"
+        ]
+      }
+    },
+    {
+      "file": "./(tabs)/settings.tsx",
+      "page": "/(tabs)/settings",
+      "namedRegex": "^(?:/\\(tabs\\))?/settings(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-0d1eaa4408084faa575a259e18f5035c.js",
+          "/_expo/static/js/web/_layout-6b83f2b00cfac3ca729b6c58e36c09be.js",
+          "/_expo/static/js/web/settings-e24539178a8f75841056f0dc3868aca8.js"
+        ]
+      }
+    },
+    {
+      "file": "expo-router/build/views/Sitemap.js",
+      "page": "/_sitemap",
+      "namedRegex": "^/_sitemap(?:/)?$",
+      "routeKeys": {},
+      "generated": true,
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-0d1eaa4408084faa575a259e18f5035c.js"
+        ]
+      }
+    },
+    {
+      "file": "./categories.tsx",
+      "page": "/categories",
+      "namedRegex": "^/categories(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-0d1eaa4408084faa575a259e18f5035c.js",
+          "/_expo/static/js/web/categories-dae3b37833acf5dfceb484574a7e134b.js"
+        ]
+      }
+    },
+    {
+      "file": "./(tabs)/transactions.tsx",
+      "page": "/(tabs)/transactions",
+      "namedRegex": "^(?:/\\(tabs\\))?/transactions(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-0d1eaa4408084faa575a259e18f5035c.js",
+          "/_expo/static/js/web/_layout-6b83f2b00cfac3ca729b6c58e36c09be.js",
+          "/_expo/static/js/web/transactions-0974d667cc621ac9ca1f3eac51020ac6.js"
+        ]
+      }
+    },
+    {
+      "file": "./add-transaction.tsx",
+      "page": "/add-transaction",
+      "namedRegex": "^/add\\-transaction(?:/)?$",
+      "routeKeys": {},
+      "assets": {
+        "css": [],
+        "js": [
+          "/_expo/static/js/web/_layout-0d1eaa4408084faa575a259e18f5035c.js",
+          "/_expo/static/js/web/add-transaction-3e089378263b0d82de42280fc5c1f5bd.js"
+        ]
+      }
+    }
+  ],
+  "notFoundRoutes": [
+    {
+      "file": "expo-router/build/views/Unmatched.js",
+      "page": "/+not-found",
+      "namedRegex": "^(?:/(?<notfound>.+?))?(?:/)?$",
+      "routeKeys": {
+        "notfound": "not-found"
+      },
+      "generated": true
+    }
+  ],
+  "redirects": [],
+  "rewrites": [],
+  "assets": {
+    "css": [],
+    "js": [
+      "/_expo/static/js/web/__expo-metro-runtime-9f1a7b6acd20011e290bc79f0164ae37.js",
+      "/_expo/static/js/web/__common-d41395f7c028207bb928eddab3627b7e.js",
+      "/_expo/static/js/web/entry-ff9ec72d996f4b33c4b0d780a63e2754.js"
+    ],
+    "favicon": "/favicon.ico"
+  },
+  "rendering": {
+    "mode": "ssr",
+    "file": "_expo/server/render.js"
+  }
+}
