@@ -113,15 +113,15 @@ function buildPdfHtml(monthKey: string): string {
   return `<!DOCTYPE html>
 <html dir="${dir}"><head><meta charset="utf-8"/>
 <style>
-  body{font-family:sans-serif;padding:24px;direction:${dir}}
-  h1{font-size:20px}h2{font-size:15px;margin-top:20px}
+  body{font-family:sans-serif;padding:24px;direction:${dir};background:#DBDDE6}
+  h1{font-size:20px;color:#1F2433}h2{font-size:15px;margin-top:20px;color:#1F2433}
   table{width:100%;border-collapse:collapse;font-size:12px}
-  th,td{border:1px solid #ccc;padding:6px 8px;text-align:start}
-  th{background:#f1f5f9}
+  th,td{border:1px solid #EBEBEF;padding:6px 8px;text-align:start}
+  th{background:#FEFEFE;color:#1F2433}
   .summary{display:flex;gap:24px;margin:12px 0}
-  .stat{background:#f8fafc;border-radius:8px;padding:12px 16px}
-  .stat-label{font-size:11px;color:#64748b}
-  .stat-value{font-size:18px;font-weight:700}
+  .stat{background:#FEFEFE;border-radius:8px;padding:12px 16px}
+  .stat-label{font-size:11px;color:#7B7D84}
+  .stat-value{font-size:18px;font-weight:700;color:#1F2433}
 </style></head><body>
 <h1>PocketFlow — ${monthKey}</h1>
 <div class="summary">
